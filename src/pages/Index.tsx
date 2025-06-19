@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -206,7 +205,7 @@ const HomePage = () => {
         {/* Blog Posts Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredPosts.map(post => (
-            <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 border-emerald-100 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden">
+            <Card key={post.id} className="group hover:shadow-xl transition-all duration-300 border-emerald-100 dark:border-slate-700 bg-white dark:bg-slate-800 overflow-hidden flex flex-col h-full">
               <div className="relative overflow-hidden">
                 <img 
                   src={post.image} 
@@ -227,7 +226,7 @@ const HomePage = () => {
                 </div>
               </div>
               
-              <CardHeader className="pb-3">
+              <CardHeader className="pb-3 flex-shrink-0">
                 <div className="flex items-center space-x-3 mb-3">
                   <Avatar className="h-8 w-8">
                     <AvatarImage src={post.authorAvatar} />
@@ -239,17 +238,17 @@ const HomePage = () => {
                   </div>
                 </div>
                 
-                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
+                <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-emerald-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2 min-h-[3.5rem]">
                   {post.title}
                 </h3>
               </CardHeader>
               
-              <CardContent className="pt-0">
-                <p className="text-slate-600 dark:text-slate-300 mb-4 line-clamp-3">
+              <CardContent className="pt-0 flex flex-col flex-grow">
+                <p className="text-slate-600 dark:text-slate-300 mb-4 line-clamp-3 flex-grow">
                   {post.excerpt}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-4 min-h-[2rem]">
                   {post.tags.map(tag => (
                     <Badge key={tag} variant="secondary" className="text-xs bg-emerald-100 text-emerald-700 dark:bg-emerald-900 dark:text-emerald-300">
                       {tag}
@@ -257,7 +256,7 @@ const HomePage = () => {
                   ))}
                 </div>
                 
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between mt-auto">
                   <div className="flex items-center space-x-4">
                     <Button
                       size="sm"
